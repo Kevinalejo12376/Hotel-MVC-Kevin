@@ -1,0 +1,536 @@
+/* ============================================================
+   styles.css — Login & Register · Hotel Villa Marina
+   Direction: Modern Art Déco — crisp ivory, ink black, sage green
+   Fonts: DM Serif Display + DM Sans + Bebas Neue
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Bebas+Neue&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ivory:      #F7F4EE;
+  --ivory-dark: #EDE9DF;
+  --ivory-mid:  #E5E0D5;
+  --ink:        #111111;
+  --ink-60:     rgba(17, 17, 17, 0.60);
+  --ink-30:     rgba(0, 0, 0, 0.705);
+  --ink-12:     rgba(17, 17, 17, 0.12);
+  --ink-06:     rgba(17, 17, 17, 0.06);
+  --sage:       #5C7D62;
+  --sage-light: #7A9F80;
+  --sage-dim:   rgba(92, 125, 98, 0.15);
+  --error:      #B83232;
+  --success:    #2E7D4F;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--ivory);
+  color: var(--ink);
+  min-height: 100vh;
+  font-weight: 300;
+}
+
+/* ============================================================
+   LAYOUT DOS COLUMNAS
+   ============================================================ */
+.auth-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   PANEL IZQUIERDO — IMAGEN EN B&N + ELEMENTOS DÉCO
+   ============================================================ */
+.auth-panel-img {
+  display: none;
+  position: relative;
+  flex: 1;
+  background-color: var(--ink);
+  overflow: hidden;
+}
+
+/* Foto desaturada */
+.auth-panel-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80");
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) contrast(1.15) brightness(0.38);
+  z-index: 0;
+  transition: filter 0.4s;
+}
+
+.auth-panel-img--register::before {
+  background-image: url("https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80");
+}
+
+/* Overlay de color con vignette */
+.auth-panel-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    160deg,
+    rgba(92,125,98,0.12) 0%,
+    transparent 50%,
+    rgba(17,17,17,0.40) 100%
+  );
+}
+
+/* Marco geométrico déco */
+.auth-panel-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 3.5rem;
+}
+
+/* Rombo decorativo arriba izquierda */
+.auth-panel-content::before {
+  content: '◆';
+  position: absolute;
+  top: 2.5rem;
+  left: 3.5rem;
+  font-size: 0.6rem;
+  color: var(--sage-light);
+  letter-spacing: 0.8em;
+}
+
+.auth-logo-icon {
+  font-size: 0.8rem;
+  color: var(--sage-light);
+  display: block;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.7em;
+}
+
+.auth-logo-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 0.4em;
+  color: var(--ivory);
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+/* Línea sage decorativa */
+.auth-logo-name::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: var(--sage);
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.auth-panel-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: rgba(247, 244, 238, 0.58);
+  line-height: 1.95;
+  padding-left: 1.2rem;
+  border-left: 1px solid var(--sage);
+  max-width: 300px;
+}
+
+/* ============================================================
+   PANEL DERECHO — FORMULARIO
+   ============================================================ */
+.auth-form-side {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  padding: 3rem 1.5rem;
+  background-color: var(--ivory);
+  position: relative;
+  overflow-y: auto;
+}
+
+/* ---- Enlace volver al inicio ---- */
+.auth-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+
+.auth-back-link:hover { color: var(--sage); }
+
+/* Caja formulario */
+.auth-form-box {
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Encabezado ---- */
+.auth-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.auth-tag::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background-color: var(--sage);
+  flex-shrink: 0;
+}
+
+.auth-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.02;
+  margin-bottom: 2.2rem;
+  position: relative;
+}
+
+/* Acento geométrico bajo el título */
+.auth-title::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 3px;
+  background-color: var(--sage);
+  margin-top: 0.9rem;
+}
+
+/* ============================================================
+   FORMULARIO
+   ============================================================ */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  margin-bottom: 0.45rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+
+.field-input {
+  background-color: #fff;
+  border: none;
+  border-bottom: 2px solid var(--ink-12);
+  padding: 0.8rem 0.2rem;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  transition: border-color 0.25s;
+  width: 100%;
+  border-radius: 0;
+  outline: none;
+  background-color: transparent;
+  border-top: 1px solid var(--ink-06);
+  border-left: 1px solid var(--ink-06);
+  border-right: 1px solid var(--ink-06);
+  padding: 0.8rem 1rem;
+  background-color: var(--ivory-dark);
+}
+
+.field-input::placeholder {
+  color: var(--ink-30);
+  font-style: italic;
+}
+
+.field-input:focus {
+  outline: none;
+  background-color: #fff;
+  border-bottom-color: var(--sage);
+  box-shadow: 0 2px 0 rgba(92,125,98,0.2);
+}
+
+.field-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%235C7D62' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  color: var(--ink-60);
+}
+
+.field-select option {
+  background-color: #fff;
+  color: var(--ink);
+}
+
+.field-hint {
+  font-size: 0.68rem;
+  color: var(--ink-30);
+  margin-top: 0.4rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.field-error {
+  font-size: 0.68rem;
+  color: var(--error);
+  margin-top: 0.35rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.field-error.hidden { display: none; }
+
+/* ============================================================
+   BOTÓN SUBMIT
+   ============================================================ */
+.btn-submit {
+  width: 100%;
+  background-color: var(--ink);
+  color: var(--ivory);
+  border: none;
+  padding: 1.05rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.38em;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  /* isolation:isolate crea un contexto de apilamiento propio, */
+  /* así z-index:-1 en ::before queda DETRÁS del texto siempre */
+  isolation: isolate;
+  transition: color 0.35s;
+}
+
+/* Fill sage de izquierda a derecha en hover */
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  left: -5%; top: 0; bottom: 0;
+  width: 0;
+  background-color: var(--sage);
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: skewX(-3deg);
+  /* z-index:-1 lo pone DETRÁS del texto (dentro del contexto isolado) */
+  z-index: -1;
+}
+
+.btn-submit:hover::before { width: 110%; }
+.btn-submit:hover         { color: var(--ink); }
+
+/* ============================================================
+   AUTH SWITCH
+   ============================================================ */
+.auth-switch {
+  font-size: 0.78rem;
+  color: var(--ink-30);
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.auth-switch-link {
+  color: var(--sage);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.auth-switch-link:hover { border-bottom-color: var(--sage); }
+
+/* ============================================================
+   ALERTAS
+   ============================================================ */
+.alert-error,
+.alert-success {
+  font-size: 0.78rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.4rem;
+  border-left: 3px solid;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.alert-error {
+  background-color: rgba(184, 50, 50, 0.06);
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.alert-success {
+  background-color: rgba(46, 125, 79, 0.07);
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.success-message-form {
+  background-color: rgba(46, 125, 79, 0.07);
+  border: 1px solid rgba(46, 125, 79, 0.28);
+  color: var(--success);
+  padding: 0.8rem 1.1rem;
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.success-icon-form { color: var(--success); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .auth-panel-img { display: block; }
+  .auth-form-side {
+    width: 50%; flex: none;
+    padding: 3rem 4.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .auth-form-side {
+    width: 44%;
+    padding: 3rem 5.5rem;
+  }
+}
+
+/* ============================================================
+   MODAL AUTH STYLES
+   ============================================================ */
+.auth-modal-page {
+  background: #080b10;
+  overflow: hidden;
+}
+
+.auth-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 999;
+}
+
+.auth-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfIvWx1QRHOaiAf3yTEKO5Bhc4kEaJfpxpoQ&s');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  filter: blur(3px) brightness(0.6);
+  z-index: 0;
+}
+
+.auth-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  max-height: calc(100vh - 3rem);
+  height: calc(100vh - 3rem);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 35px 80px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+}
+
+.auth-modal-panel .auth-layout {
+  min-height: auto;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.auth-modal-panel .auth-panel-img,
+.auth-modal-panel .auth-form-side {
+  min-height: 0;
+}
+
+.auth-modal-panel .auth-form-side {
+  background: transparent;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+
+.auth-modal-page .auth-form-side::after{
+  display: none !important;
+  content: none !important;
+}
+
+
+.auth-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #111;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.auth-modal-close:hover {
+  background: rgba(255,255,255,1);
+}

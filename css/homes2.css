@@ -1,0 +1,719 @@
+/* ============================================================
+   home2.css — Área de usuario · Hotel Villa Marina
+   Direction: Modern Art Déco — ivory, ink black, sage green
+   Fonts: DM Serif Display + DM Sans + Bebas Neue
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Bebas+Neue&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ivory:      #F7F4EE;
+  --ivory-dark: #EDE9DF;
+  --ivory-mid:  #E2DDD3;
+  --ink:        #111111;
+  --ink-70:     rgba(17,17,17,0.70);
+  --ink-45:     rgba(17,17,17,0.45);
+  --ink-20:     rgba(17,17,17,0.20);
+  --ink-10:     rgba(17,17,17,0.10);
+  --ink-05:     rgba(17,17,17,0.05);
+  --sage:       #5C7D62;
+  --sage-light: #7A9F80;
+  --sage-dim:   rgba(92,125,98,0.15);
+  --sage-faint: rgba(92,125,98,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background-color: var(--ivory);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background-color: rgba(247, 244, 238, 0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--ink-10);
+}
+
+.navbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Logo */
+.navbar-logo { text-decoration: none; flex-shrink: 0; }
+
+.logo-img {
+  height: 40px; width: auto;
+  object-fit: contain; display: block;
+}
+
+.logo-fallback {
+  display: flex; align-items: center; gap: 0.5rem;
+}
+
+.logo-icon {
+  color: var(--sage); font-size: 1rem;
+  letter-spacing: 0.3em;
+}
+
+.logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.48em;
+  color: var(--ink);
+}
+
+/* Menú central */
+.navbar-menu {
+  display: none;
+  list-style: none;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-45);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link--active {
+  color: var(--ink);
+  border-bottom-color: var(--sage);
+}
+
+/* Acciones derecha */
+.navbar-actions {
+  display: none;
+  align-items: center;
+  gap: 1.2rem;
+  flex-shrink: 0;
+}
+
+.nav-username {
+  font-size: 0.75rem;
+  color: var(--ink-45);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+}
+
+.nav-username::before {
+  content: 'Hola, ';
+  color: var(--ink-20);
+}
+
+.btn-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1.05rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  color: #B83232;
+  border: 1px solid rgba(184, 50, 50, 0.28);
+  background: transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  background-color: rgba(184, 50, 50, 0.07);
+  border-color: rgba(184, 50, 50, 0.55);
+}
+
+/* Hamburguesa */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background-color: var(--ink);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Menú móvil */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--ink-10);
+  background-color: var(--ivory-dark);
+  padding: 0.5rem 0;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-link {
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-70);
+  padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid var(--ink-05);
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.mobile-link:hover {
+  color: var(--ink);
+  background-color: var(--sage-faint);
+}
+
+.mobile-link--logout { color: #B83232; margin-top: 0.25rem; }
+
+/* ============================================================
+   HERO — Tipografía masiva en fondo oscuro, foto lateral recortada
+   ============================================================ */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 4rem;
+  overflow: hidden;
+  background-color: var(--ink);
+}
+
+/* Foto en B&N recortada en diagonal a la derecha */
+.hero-bg {
+  position: absolute;
+  top: 0; right: 0;
+  width: 55%;
+  height: 100%;
+  background-image:
+    url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) brightness(0.42) contrast(1.1);
+  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    var(--ink) 0%,
+    rgba(17,17,17,0.96) 42%,
+    rgba(17,17,17,0.22) 75%,
+    transparent 100%
+  );
+}
+
+/* Cuadrícula déco sutil */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(92,125,98,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(92,125,98,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 max(2rem, 8vw);
+  max-width: 900px;
+  animation: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--sage-light);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.hero-tag::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--sage);
+}
+
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 400;
+  line-height: 1.0;
+  color: var(--ivory);
+  margin-bottom: 1.2rem;
+}
+
+.hero-name {
+  font-style: italic;
+  color: var(--sage-light);
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: rgba(247,244,238,0.55);
+  font-weight: 300;
+  line-height: 1.85;
+  margin-bottom: 3rem;
+  max-width: 520px;
+}
+
+/* Botones hero */
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.9rem 2.4rem;
+  background-color: var(--sage);
+  color: var(--ivory);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.32em;
+  transition: background-color 0.25s, box-shadow 0.25s;
+}
+
+.btn-primary:hover {
+  background-color: var(--sage-light);
+  box-shadow: 0 6px 22px rgba(92,125,98,0.35);
+}
+
+.btn-secondary {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.9rem 2.4rem;
+  border: 1px solid rgba(247,244,238,0.25);
+  color: var(--ivory);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.32em;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(247,244,238,0.08);
+  border-color: rgba(247,244,238,0.50);
+}
+
+/* ============================================================
+   UTILIDADES SECCIÓN
+   ============================================================ */
+.section-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-header {
+  margin-bottom: 3.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--sage);
+}
+
+.section-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--sage);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: var(--ink);
+}
+
+/* ============================================================
+   SECCIÓN SERVICIOS
+   ============================================================ */
+.section-servicios {
+  padding: 6rem 0;
+  background-color: var(--ivory-dark);
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px; /* efecto mosaico con gap=1px y fondo ink */
+  background-color: var(--ink-10);
+}
+
+.servicio-card {
+  background-color: var(--ivory-dark);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s;
+}
+
+.servicio-card:hover { transform: none; }
+
+.servicio-img-wrap {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Foto en B&N con color en hover */
+.servicio-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
+  filter: grayscale(80%) brightness(0.85);
+}
+
+.servicio-card:hover .servicio-img {
+  transform: scale(1.06);
+  filter: grayscale(0%) brightness(0.9);
+}
+
+/* Badge número en la foto */
+.servicio-img-wrap::after {
+  content: attr(data-num);
+  position: absolute;
+  top: 1rem; left: 1rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: rgba(247,244,238,0.20);
+  line-height: 1;
+}
+
+.servicio-body {
+  padding: 1.5rem;
+  border-top: 2px solid var(--ink-10);
+  transition: border-color 0.3s;
+  flex: 1;
+}
+
+.servicio-card:hover .servicio-body {
+  border-top-color: var(--sage);
+}
+
+.servicio-icon {
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 0.55rem;
+}
+
+.servicio-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.servicio-desc {
+  font-size: 0.82rem;
+  color: var(--ink-70);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ============================================================
+   SECCIÓN HABITACIONES
+   ============================================================ */
+.section-habitaciones {
+  padding: 6rem 0;
+  background-color: var(--ivory);
+}
+
+.habitaciones-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.hab-card {
+  background-color: var(--ivory-dark);
+  border: 1px solid var(--ink-10);
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.hab-card:hover {
+  border-color: var(--sage);
+  box-shadow: 0 8px 32px rgba(17,17,17,0.10);
+}
+
+.hab-img-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.hab-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
+  filter: grayscale(50%) brightness(0.90);
+}
+
+.hab-card:hover .hab-img {
+  transform: scale(1.05);
+  filter: grayscale(0%) brightness(0.95);
+}
+
+.hab-tipo {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  background-color: var(--ivory);
+  color: var(--ink);
+  padding: 0.28rem 0.8rem;
+}
+
+.hab-body { padding: 1.5rem; }
+
+.hab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--ink-10);
+  gap: 0.5rem;
+}
+
+.hab-nombre {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.hab-precio-wrap { text-align: right; flex-shrink: 0; }
+
+.hab-desde {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.58rem;
+  color: var(--ink-45);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.hab-precio {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--sage);
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.hab-noche {
+  font-size: 0.65rem;
+  color: var(--ink-45);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.hab-detalle {
+  font-size: 0.82rem;
+  color: var(--ink-70);
+  line-height: 1.7;
+  margin-bottom: 1.3rem;
+  font-weight: 300;
+}
+
+.hab-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.hab-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0.28rem 0.8rem;
+  border: 1px solid;
+}
+
+.hab-badge--ok {
+  border-color: rgba(46,125,79,0.40);
+  color: #2E7D4F;
+}
+
+.hab-badge--no {
+  border-color: rgba(184,50,50,0.40);
+  color: #B83232;
+}
+
+.btn-reservar {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+  padding: 0.48rem 1.4rem;
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.btn-reservar:hover {
+  background-color: var(--ink);
+  color: var(--ivory);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid var(--ink-10);
+  padding: 2.5rem 1.5rem;
+  background-color: var(--ink);
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-logo .logo-icon { color: var(--sage); font-size: 0.9rem; letter-spacing: 0.3em; }
+
+.footer-logo .logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.45em;
+  color: var(--ivory);
+}
+
+.footer-copy {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: rgba(247,244,238,0.30);
+  font-weight: 400;
+}
+
+/* ============================================================
+   RESPONSIVE — Tablet (768px+)
+   ============================================================ */
+@media (min-width: 768px) {
+  .hamburger      { display: none; }
+  .mobile-menu    { display: none !important; }
+  .navbar-menu    { display: flex; }
+  .navbar-actions { display: flex; }
+
+  .servicios-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .habitaciones-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Desktop (1024px+)
+   ============================================================ */
+@media (min-width: 1024px) {
+  .servicios-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .habitaciones-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

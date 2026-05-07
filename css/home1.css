@@ -1,0 +1,425 @@
+/* ============================================================
+   home.css — Landing pública · Hotel Villa Marina
+   Direction: Modern Art Déco — ivory, ink black, sage green
+   Fonts: DM Serif Display + DM Sans + Bebas Neue
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Bebas+Neue&display=swap');
+
+:root {
+  --ivory:       #F7F4EE;
+  --ivory-dark:  #EDE9DF;
+  --ink:         #111111;
+  --ink-70:      rgba(17,17,17,0.70);
+  --ink-40:      rgba(17,17,17,0.40);
+  --ink-15:      rgba(17,17,17,0.15);
+  --ink-06:      rgba(17,17,17,0.06);
+  --sage:        #5C7D62;
+  --sage-light:  #7A9F80;
+  --sage-dim:    rgba(92,125,98,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background-color: var(--ivory);
+  color: var(--ink);
+}
+
+h1, h2, h3, .serif {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+}
+
+.gold { color: var(--sage); }
+
+/* ============================================================
+   NAVBAR — barra blanca con logo Bebas + links DM Sans
+   ============================================================ */
+nav {
+  background: rgba(247, 244, 238, 0.94) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--ink-15) !important;
+}
+
+/* Forzar tipografías en navbar */
+nav span.serif {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.45em !important;
+  color: var(--ink) !important;
+}
+
+/* Nav links */
+nav a.hover\:text-white {
+  color: black !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.22em !important;
+  font-weight: 500 !important;
+}
+
+nav a.hover\:text-white:hover {
+  color: var(--sage) !important;
+}
+
+/* Ícono logo */
+nav span.gold { color: var(--sage) !important; font-size: 1rem !important; }
+
+/* ============================================================
+   BOTONES NAVBAR
+   ============================================================ */
+.btn-outline {
+  border: 1px solid var(--ink-15) !important;
+  color: var(--ink) !important;
+  background: transparent !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.2em !important;
+  font-weight: 500 !important;
+  border-radius: 0 !important;
+  transition: border-color 0.2s, color 0.2s !important;
+}
+
+.btn-outline:hover {
+  border-color: var(--sage) !important;
+  color: var(--sage) !important;
+}
+
+.btn-gold {
+  background-color: var(--ink) !important;
+  color: var(--ivory) !important;
+  border: none !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.2em !important;
+  font-weight: 500 !important;
+  border-radius: 0 !important;
+  transition: background-color 0.25s !important;
+}
+
+.btn-gold:hover {
+  background-color: var(--sage) !important;
+}
+
+/* ============================================================
+   HERO — Tipografía masiva, fondo claro con foto en mask
+   ============================================================ */
+.hero-bg {
+  background-color: var(--ink) !important;
+  background-image: none !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Foto de fondo completa del hero */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1000&q=80");
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) contrast(1.1) brightness(0.50);
+}
+
+/* Overlay de color suave para contraste del texto */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(17,17,17,0.15) 0%,
+    rgba(17,17,17,0.45) 45%,
+    rgba(17,17,17,0.55) 100%
+  );
+  z-index: 1;
+}
+
+/* Contenido hero sobre la imagen */
+.hero-bg > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Textos del hero en claro */
+.hero-bg h1 {
+  color: var(--ivory) !important;
+  font-family: 'DM Serif Display', serif !important;
+  font-size: clamp(3.5rem, 9vw, 7.5rem) !important;
+  font-weight: 400 !important;
+  line-height: 0.95 !important;
+}
+
+.hero-bg p.text-white\/100,
+.hero-bg .text-white\/100 {
+  color: rgba(247,244,238,0.72) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 300 !important;
+  max-width: 440px !important;
+}
+
+.hero-bg .text-xs.gold {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.4em !important;
+  color: var(--sage-light) !important;
+}
+
+/* ============================================================
+   BOTÓN HERO — Descubrir
+   ============================================================ */
+.btn-hero {
+  border: 1px solid var(--ivory) !important;
+  color: var(--ivory) !important;
+  background: transparent !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.38em !important;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.35s !important;
+}
+
+.btn-hero::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background-color: var(--ivory);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.btn-hero:hover::before { width: 100%; }
+.btn-hero:hover { color: var(--ink) !important; }
+
+/* Texto del botón sobre el fill */
+.btn-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   ANIMACIÓN FADE UP
+   ============================================================ */
+.fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.28s; }
+.delay-3 { animation-delay: 0.46s; }
+
+/* ============================================================
+   IMÁGENES TARJETAS DE SERVICIOS
+   ============================================================ */
+.card-img-1 {
+  background-image: url("https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80");
+  filter: grayscale(30%);
+  transition: filter 0.5s !important;
+}
+.card-img-2 {
+  background-image: url("https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80");
+  filter: grayscale(30%);
+  transition: filter 0.5s !important;
+}
+.card-img-3 {
+  background-image: url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80");
+  filter: grayscale(30%);
+  transition: filter 0.5s !important;
+}
+.card-img-4 {
+  background-image: url("https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80");
+  filter: grayscale(30%);
+  transition: filter 0.5s !important;
+}
+
+.group:hover .card-img-1,
+.group:hover .card-img-2,
+.group:hover .card-img-3,
+.group:hover .card-img-4 {
+  filter: grayscale(0%) !important;
+}
+
+/* Sección servicios — fondo ivory oscuro */
+#servicios {
+  background-color: var(--ivory-dark) !important;
+  background: var(--ivory-dark) !important;
+}
+
+/* h2 de servicios — ink */
+#servicios h2 { color: var(--ink) !important; }
+#servicios p.gold {
+  color: var(--sage) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.4em !important;
+  font-weight: 500 !important;
+}
+
+/* Tarjetas de servicios */
+#servicios .group {
+  outline: 1px solid var(--ink-15);
+  transition: outline-color 0.3s !important;
+}
+#servicios .group:hover {
+  outline-color: var(--sage) !important;
+}
+
+/* Textos dentro de tarjetas */
+#servicios .group h3 { color: var(--ivory) !important; }
+#servicios .group p  { color: rgba(247,244,238,0.70) !important; }
+
+/* ============================================================
+   STATS BAR — invertida: fondo ink, texto ivory
+   ============================================================ */
+.stats-bar {
+  background-color: var(--ink) !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.stats-bar p.serif {
+  font-family: 'Bebas Neue', sans-serif !important;
+  color: var(--sage-light) !important;
+  font-size: 4rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+.stats-bar p.text-white\/50 {
+  color: rgba(247,244,238,0.45) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.6rem !important;
+  letter-spacing: 0.28em !important;
+  font-weight: 500 !important;
+}
+
+/* ============================================================
+   GALERÍA — imágenes desaturadas con color en hover
+   ============================================================ */
+#galeria { background-color: var(--ivory) !important; }
+#galeria h2 { color: var(--ink) !important; }
+#galeria p.gold {
+  color: var(--sage) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.4em !important;
+  font-weight: 500 !important;
+}
+
+#galeria img {
+  filter: grayscale(70%) contrast(1.05);
+  transition: filter 0.5s !important;
+}
+
+#galeria .group:hover img {
+  filter: grayscale(0%) contrast(1) !important;
+}
+
+/* Borde sage en hover */
+#galeria .group {
+  outline: 2px solid transparent;
+  transition: outline-color 0.35s !important;
+}
+#galeria .group:hover {
+  outline-color: var(--sage) !important;
+  outline-offset: -2px;
+}
+
+/* ============================================================
+   CONTACTO
+   ============================================================ */
+#contacto {
+  background-color: var(--ivory-dark) !important;
+}
+
+#contacto h2 { color: var(--ink) !important; }
+#contacto p.gold {
+  color: var(--sage) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.4em !important;
+  font-weight: 500 !important;
+}
+#contacto p.text-white\/50 {
+  color: var(--ink-40) !important;
+}
+#contacto .text-white\/60 {
+  color: var(--ink-70) !important;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background-color: var(--ink) !important;
+  border-top: 1px solid rgba(92,125,98,0.25) !important;
+  color: rgba(247,244,238,0.35) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.22em !important;
+  font-weight: 400 !important;
+}
+
+/* ============================================================
+   CAMPO TEXTO (reutilizado en home si hay forms)
+   ============================================================ */
+.field-input {
+  background-color: var(--ivory-dark);
+  border: 1px solid var(--ink-15);
+  border-bottom: 2px solid var(--ink-40);
+  padding: 0.8rem 1rem;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.field-input::placeholder {
+  color: var(--ink-30);
+  font-style: italic;
+}
+
+.field-input:focus {
+  outline: none;
+  border-bottom-color: var(--sage);
+  background-color: #fff;
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: var(--ink);
+  color: var(--ivory);
+  border: none;
+  cursor: pointer;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.35em;
+  transition: background-color 0.25s;
+}
+
+.btn-submit:hover { background-color: var(--sage); }
+
+.alert-error {
+  border-left: 3px solid #B83232;
+  background-color: rgba(184,50,50,0.06);
+  color: #B83232;
+}
+
+.alert-success {
+  border-left: 3px solid #2E7D4F;
+  background-color: rgba(46,125,79,0.07);
+  color: #2E7D4F;
+}
