@@ -13,7 +13,7 @@ $codigo_reporte = 'REP-' . mt_rand(100000, 999999);
 function to_iso($str)
 {
     return mb_convert_encoding($str, 'ISO-8859-1', 'UTF-8');
-}
+}   
 
 class PDF extends FPDF
 {
