@@ -109,10 +109,13 @@ class RegisterController
 
         $usuarioModel->registrar($datos);
 
+        $_SESSION['email_temp'] = $Email;
+        $_SESSION['nombre_temp'] = $Nombre;
+
         $_SESSION['mensaje'] = "¡Usuario creado con éxito!";
         $_SESSION['tipo'] = "success";
         $_SESSION['datos'] = [];
-        header("Location: index.php?action=getFormRegisterUser&success=1");
+        header("Location: index.php?action=getFormRegisterUser&success=1&send=sendEmail&action=getFormLoginUser");
         exit;
     }
 }

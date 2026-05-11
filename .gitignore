@@ -1,2 +1,4 @@
 LIB/SPREADSHEET/vendor/
 LIB/SPREADSHEET/composer.lock
+LIB/EMAIL/vendor/
+LIB/EMAIL/composer.lock

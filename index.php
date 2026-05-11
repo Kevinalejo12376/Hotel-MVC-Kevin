@@ -7,12 +7,14 @@ require_once 'controller/LoginController.php';
 require_once 'controller/RegisterController.php';
 require_once 'controller/ReservasController.php';
 require_once 'controller/HabitacionesController.php';
+require_once 'controller/emailController.php';
 
 $baseController = new BaseController();
 $loginController = new LoginController();
 $registerController = new RegisterController();
 $reservasController = new ReservasController();
 $habitacionesController = new HabitacionesController();
+$emailController = new EmailController();
 
 
 if (isset($_GET['action'])) {
@@ -88,6 +90,11 @@ if (isset($_GET['action'])) {
     if ($_GET['action'] == 'getRoomsByType') {
         $reservasController->getRoomsByType();
     }
+
+    //EMAIL
+    if (isset($_GET['send']) && $_GET['send'] == 'sendEmail') {
+        $emailController->sendEmail();
+    }   
 
 } else {
     // PÁGINA DE INICIO (SIN SESIÓN)
