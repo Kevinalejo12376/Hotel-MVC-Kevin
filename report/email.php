@@ -41,71 +41,75 @@ try {
 
     // Cuerpo del email con diseño profesional y elegante
     $mail->Body = "
-    <div style='background-color: #f4f7f6; padding: 40px 0; font-family: \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; margin: 0;'>
-        <div style='max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);'>
+    <div style='margin: 0; padding: 0; background-color: #f4f7f6; font-family: \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;'>
+        <table align='center' border='0' cellpadding='0' cellspacing='0' width='600' style='border-collapse: collapse; background-color: #ffffff; margin-top: 30px; margin-bottom: 30px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 45px rgba(0,0,0,0.08);'>
             
-            <!-- Encabezado con Degradado -->
-            <div style='background: linear-gradient(135deg, #1a5f7a 0%, #00a8cc 100%); padding: 50px 40px; text-align: center;'>
-                <h1 style='color: #ffffff; margin: 0; font-size: 32px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase;'>Hotel Villa Marina</h1>
-                <p style='color: rgba(255,255,255,0.8); margin-top: 10px; font-size: 14px; letter-spacing: 1px;'>EL LUJO QUE MERECES</p>
-            </div>
+            <!-- Hero Section with Background Image -->
+            <tr>
+                <td align='center' style='background: url(\"https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1000&auto=format&fit=crop\") no-repeat center center; background-size: cover; padding: 80px 40px;'>
+                    <div style='background-color: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 15px; display: inline-block; backdrop-filter: blur(5px);'>
+                        <h1 style='color: #1a5f7a; margin: 0; font-size: 26px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700;'>¡Bienvenido!</h1>
+                        <p style='color: #00a8cc; margin: 5px 0 0 0; font-size: 14px; letter-spacing: 2px;'>HOTEL VILLA MARINA</p>
+                    </div>
+                </td>
+            </tr>
 
-            <!-- Imagen Destacada -->
-            <div style='width: 100%; height: 250px; overflow: hidden;'>
-                <img src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1000&auto=format&fit=crop' alt='Hotel Villa Marina' style='width: 100%; height: 100%; object-fit: cover; display: block;'>
-            </div>
+            <!-- Main Content -->
+            <tr>
+                <td style='padding: 50px 40px;'>
+                    <h2 style='color: #2c3e50; margin-top: 0; font-size: 28px; font-weight: 600; text-align: center;'>Tu aventura comienza aquí</h2>
+                    
+                    <p style='color: #5d6d7e; line-height: 1.8; font-size: 17px; text-align: center; margin-top: 20px;'>
+                        Estimado(a) <strong>$nombre</strong>, es un placer darte la bienvenida a nuestra exclusiva comunidad. Hemos creado este espacio pensando en tu confort y tranquilidad.
+                    </p>
 
-            <!-- Contenido Principal -->
-            <div style='padding: 50px 40px;'>
-                <h2 style='color: #2c3e50; margin-top: 0; font-size: 24px; font-weight: 600;'>¡Bienvenido a la Experiencia Villa Marina!</h2>
-                
-                <p style='color: #5d6d7e; line-height: 1.8; font-size: 16px;'>
-                    Estimado(a) <strong>$nombre</strong>,<br><br>
-                    Es un honor para nosotros darte la bienvenida a nuestra exclusiva comunidad. En el <strong>Hotel Villa Marina</strong>, cada detalle está diseñado para ofrecerte una estancia inolvidable marcada por el confort y la elegancia.
-                </p>
+                    <!-- User Info Card -->
+                    <div style='background: linear-gradient(145deg, #ffffff, #f0f4f8); border-radius: 15px; border: 1px solid #e1e8ed; padding: 30px; margin: 40px 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);'>
+                        <h3 style='margin: 0 0 20px 0; color: #1a5f7a; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-align: center;'>Detalles de tu cuenta</h3>
+                        <table width='100%' cellpadding='0' cellspacing='0'>
+                            <tr>
+                                <td style='color: #7f8c8d; padding: 12px 0; font-size: 15px;'>Nombre:</td>
+                                <td style='color: #2c3e50; font-weight: 600; text-align: right; font-size: 15px;'>$nombre</td>
+                            </tr>
+                            <tr>
+                                <td style='color: #7f8c8d; padding: 12px 0; font-size: 15px; border-top: 1px solid #edf2f7;'>Email:</td>
+                                <td style='color: #2c3e50; font-weight: 600; text-align: right; font-size: 15px; border-top: 1px solid #edf2f7;'>$email</td>
+                            </tr>
+                            <tr>
+                                <td style='color: #7f8c8d; padding: 12px 0; font-size: 15px; border-top: 1px solid #edf2f7;'>Estado:</td>
+                                <td style='color: #27ae60; font-weight: 600; text-align: right; font-size: 15px; border-top: 1px solid #edf2f7;'>✓ CUENTA ACTIVADA</td>
+                            </tr>
+                        </table>
+                    </div>
 
-                <!-- Tarjeta de Datos -->
-                <div style='background-color: #f9fbfc; border-radius: 12px; border: 1px solid #e1e8ed; padding: 25px; margin: 35px 0;'>
-                    <h3 style='margin: 0 0 15px 0; color: #1a5f7a; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;'>Confirmación de Registro</h3>
-                    <table style='width: 100%; border-collapse: collapse;'>
-                        <tr>
-                            <td style='color: #7f8c8d; padding: 8px 0; font-size: 14px;'>Nombre del Huésped:</td>
-                            <td style='color: #2c3e50; font-weight: 600; text-align: right; font-size: 14px;'>$nombre</td>
-                        </tr>
-                        <tr>
-                            <td style='color: #7f8c8d; padding: 8px 0; font-size: 14px;'>Correo Electrónico:</td>
-                            <td style='color: #2c3e50; font-weight: 600; text-align: right; font-size: 14px;'>$email</td>
-                        </tr>
-                        <tr>
-                            <td style='color: #7f8c8d; padding: 8px 0; font-size: 14px;'>Estado de Cuenta:</td>
-                            <td style='color: #27ae60; font-weight: 600; text-align: right; font-size: 14px;'>ACTIVA</td>
-                        </tr>
-                    </table>
-                </div>
+                    <!-- Call to Action -->
+                    <div style='text-align: center; margin-top: 40px;'>
+                        <p style='color: #7f8c8d; font-size: 15px; margin-bottom: 25px;'>¿Listo para tu próxima escapada de lujo?</p>
+                        <a href='http://localhost/Hotel-MVC-Kevin/' 
+                           style='background: linear-gradient(135deg, #1a5f7a 0%, #00a8cc 100%); color: #ffffff; padding: 18px 45px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; display: inline-block; box-shadow: 0 10px 25px rgba(26, 95, 122, 0.3); transition: transform 0.2s;'>
+                           Explorar Habitaciones
+                        </a>
+                    </div>
+                </td>
+            </tr>
 
-                <p style='color: #5d6d7e; line-height: 1.8; font-size: 16px;'>
-                    A partir de ahora, tendrás acceso preferencial a nuestras promociones de temporada y eventos especiales.
-                </p>
-
-                <!-- Botón de Acción -->
-                <div style='text-align: center; margin-top: 45px;'>
-                    <a href='http://localhost/Hotel-MVC-Kevin/' 
-                       style='background-color: #1a5f7a; color: #ffffff; padding: 18px 35px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block; box-shadow: 0 10px 20px rgba(26, 95, 122, 0.2); transition: all 0.3s;'>
-                       Explorar el Hotel
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pie de Página -->
-            <div style='background-color: #f8f9fa; padding: 30px 40px; text-align: center; border-top: 1px solid #eeeeee;'>
-                <p style='color: #bdc3c7; font-size: 13px; margin: 0;'>
-                    © 2026 Hotel Villa Marina. Todos los derechos reservados.<br>
-                    <span style='color: #dcdde1;'>Ubicación: Av. Costanera, Suite 101 | Tel: +57 300 000 0000</span>
-                </p>
-                <div style='margin-top: 15px;'>
-                    <p style='color: #bdc3c7; font-size: 11px; margin: 0;'>Este es un correo automático, por favor no respondas directamente.</p>
-                </div>
-            </div>
+            <!-- Modern Footer -->
+            <tr>
+                <td style='background-color: #f8fafc; padding: 40px; text-align: center; border-top: 1px solid #f1f5f9;'>
+                    <div style='margin-bottom: 20px;'>
+                        <img src='https://cdn-icons-png.flaticon.com/512/25/25231.png' width='24' style='margin: 0 10px;' alt='Social'>
+                        <img src='https://cdn-icons-png.flaticon.com/512/174/174855.png' width='24' style='margin: 0 10px;' alt='Social'>
+                        <img src='https://cdn-icons-png.flaticon.com/512/174/174848.png' width='24' style='margin: 0 10px;' alt='Social'>
+                    </div>
+                    <p style='color: #94a3b8; font-size: 13px; margin: 0; line-height: 1.6;'>
+                        © 2026 Hotel Villa Marina. Todos los derechos reservados.<br>
+                        <span style='color: #cbd5e1;'>Ubicación: Av. Costanera, Suite 101 | Tel: +57 300 000 0000</span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <div style='text-align: center; padding-bottom: 30px;'>
+            <p style='color: #94a3b8; font-size: 11px;'>Recibiste este correo porque te registraste en nuestro portal.<br>Si no fuiste tú, por favor ignora este mensaje.</p>
         </div>
     </div>
     ";

@@ -92,9 +92,10 @@ class Reserva {
         $stmt = $conexion->getConexion()->prepare($sql);
         $stmt->bind_param("iissiiid", $data['id_user'], $data['id_habitacion'], $data['fecha_inicio'], $data['fecha_final'], $data['num_personas'], $data['estado'], $data['precio'], $data['id_metodo_pago']);
         $ok = $stmt->execute();
+        $id = $ok ? $conexion->getConexion()->insert_id : false;
         $stmt->close();
         $conexion->cerrar();
-        return $ok;
+        return $id;
     }
 
     public static function actualizarReserva($data) {

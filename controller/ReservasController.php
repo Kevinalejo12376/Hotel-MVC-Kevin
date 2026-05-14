@@ -1,5 +1,7 @@
 <?php
 require_once 'model/Reserva.php';
+require_once 'model/Usuario.php';
+require_once 'controller/emailController.php';
 
 class ReservasController
 {
@@ -47,9 +49,22 @@ class ReservasController
             'precio' => $precio,
             'id_metodo_pago' => $id_metodo_pago
         ];
-        $ok = self::guardarReserva($data);
-        if ($ok) {
+        $reserva_id = self::guardarReserva($data);
+        if ($reserva_id) {
             $_SESSION['success'] = 'Reserva realizada correctamente';
+            
+            // Enviar correo de confirmación
+            try {
+                $usuarioModel = new Usuario();
+                $userData = $usuarioModel->obtenerPorId($id_user);
+                $reservaFullData = Reserva::obtenerReservaPorId($reserva_id, $id_user);
+                
+                $emailController = new EmailController();
+                $emailController->sendReservationEmail($userData, $reservaFullData);
+            } catch (Exception $e) {
+                // No bloqueamos el flujo si falla el correo, pero podríamos loguearlo
+                error_log("Error al enviar correo de reserva: " . $e->getMessage());
+            }
         } else {
             $_SESSION['errors']['reserva'] = 'Error al guardar la reserva';
         }
