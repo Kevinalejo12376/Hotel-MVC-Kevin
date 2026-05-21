@@ -96,6 +96,20 @@ class ReservasController
             'precio' => $precio,
         ];
         $ok = self::actualizarReserva($data);
+        if ($ok) {
+            // Enviar correo de modificación
+            try {
+                $id_user = $_SESSION['usuario']['id'];
+                $usuarioModel = new Usuario();
+                $userData = $usuarioModel->obtenerPorId($id_user);
+                $reservaFullData = Reserva::obtenerReservaPorId($id, $id_user);
+                
+                $emailController = new EmailController();
+                $emailController->sendUpdateEmail($userData, $reservaFullData);
+            } catch (Exception $e) {
+                error_log("Error al enviar correo de actualización: " . $e->getMessage());
+            }
+        }
         echo json_encode(['status' => $ok ? 'success' : 'error']);
         exit;
     }
@@ -107,7 +121,26 @@ class ReservasController
             exit;
         }
         $id = $_POST['id_reserva'];
+        $id_user = $_SESSION['usuario']['id'];
+        
+        // Obtener datos antes de eliminar para el correo
+        $reservaFullData = Reserva::obtenerReservaPorId($id, $id_user);
+        
         $ok = Reserva::eliminarReserva($id);
+        
+        if ($ok && $reservaFullData) {
+            // Enviar correo de cancelación
+            try {
+                $usuarioModel = new Usuario();
+                $userData = $usuarioModel->obtenerPorId($id_user);
+                
+                $emailController = new EmailController();
+                $emailController->sendCancelEmail($userData, $reservaFullData);
+            } catch (Exception $e) {
+                error_log("Error al enviar correo de cancelación: " . $e->getMessage());
+            }
+        }
+        
         echo json_encode(['success' => $ok, 'message' => $ok ? 'Reserva eliminada' : 'Error al eliminar']);
         exit;
     }

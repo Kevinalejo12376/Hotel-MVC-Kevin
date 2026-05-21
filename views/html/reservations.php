@@ -904,7 +904,6 @@ $pago_icon = ['Bancolombia' => '🏦', 'Nequi' => '💜', 'Daviplata' => '❤️
 
     function confirmarBorrar(id) {
       reservaABorrar = id;
-      document.getElementById('del-id').textContent = id;
       document.getElementById('modalDel').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -972,11 +971,10 @@ $pago_icon = ['Bancolombia' => '🏦', 'Nequi' => '💜', 'Daviplata' => '❤️
       showToast('📄', 'Generando reporte', 'Tu reporte de Excel está siendo descargado.');
     }
 
-    function showToast(icon, title, sub) {
+    function showToast(icon, title) {
       const toast = document.getElementById('toast');
       document.getElementById('toast-icon').textContent = icon;
       document.getElementById('toast-title').textContent = title;
-      document.getElementById('toast-sub').textContent = sub;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 4000);
     }
